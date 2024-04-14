@@ -1,5 +1,6 @@
 import streamlit as st
-from src.helper import *
+from src.audio_to_text import *
+from src.llm_model import *
 
 
 def main():
@@ -7,7 +8,7 @@ def main():
 
     if st.button('Ask me'):
         with st.spinner('Listening ...') as spinner:
-            text=voice_input()
+            text=get_voice_data_from_microphone()
             response=get_llm_model(text)
             text_to_speech(response)
             
